@@ -1,11 +1,18 @@
 import React from "react";
-import { Older18 } from "./Older18.js";
-
-// Modify the Welcome component so that the Age component is rendered only if the age prop is present.
 
 export class Welcome extends React.Component {
   render() {
-    return <>{this.props.props.age ? <Older18 {...this} /> : ""}</>;
+    console.log(this.props.age)
+    return (
+      <>
+        {this.props.age && this.props.age > 18 ? (
+          <h1>Welcome {this.props.name}!</h1>
+        ) : (
+          <h1>{this.props.name}... you are not allowed here...</h1>
+
+        )}
+      </>
+    );
   }
 }
 
