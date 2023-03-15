@@ -1,11 +1,9 @@
 import React from "react";
 import { Age } from "./Age";
 
-// Modify the Welcome component so that the Age component is rendered only if the age prop is greater than 18 and less than 65 and the name prop is equal to "John".
 
 export class Welcome extends React.Component {
   render() {
-    // I could change stronge tag but I didn't wanted to change it, instead I reached element's value 
     const nameVal = this.props.name.props.children;
     return (
       <>
