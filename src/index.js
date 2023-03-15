@@ -4,4 +4,4 @@ import { App } from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<App name={<strong>Adrian</strong>} age="24" />);
+root.render(<App name={<strong>Adrian</strong>}  age="0" />);
