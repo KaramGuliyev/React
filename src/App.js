@@ -1,4 +1,5 @@
 import React from "react";
+import { Counter } from "./Counter";
 import { Welcome } from "./Welcome";
 
 export class App extends React.Component {
@@ -6,6 +7,7 @@ export class App extends React.Component {
     return (
       <>
         <Welcome name={this.props.name} age={this.props.age} />
+        <Counter counterStart={0} />
       </>
     );
   }

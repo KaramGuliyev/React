@@ -1,7 +1,5 @@
 import React from "react";
 import { Age } from "./Age";
-
-
 export class Welcome extends React.Component {
   render() {
     const nameVal = this.props.name.props.children;
