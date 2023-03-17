@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 
-// Create a Login component containing three inputs: a username input, a password input and a remember checkbox.
-// All three inputs should be controlled components.
+// Add a "login" button to the Login component.
+// This button should be disabled as long as the username and password inputs are empty.
+// When clicked, the event handler attached to the button should call an onLogin function passed as a prop to the Login component, passing it the state.
 
 export class Login extends Component {
   state = {
     userName: "",
     password: "",
     remember: false,
+    button: true,
   };
 
   handleChange = (e) => {
@@ -20,13 +22,17 @@ export class Login extends Component {
     this.setState({
       [name]:
         type === "checkbox" ? checked : value,
+      button:
+        this.state.userName &&
+        this.state.password === ""
+          ? true
+          : false,
     });
   };
 
   render() {
     return (
       <>
-        <h1>Flower Form</h1>
         <input
           name="userName"
           value={this.state.userName}
@@ -43,11 +49,20 @@ export class Login extends Component {
           checked={this.state.remember}
           onChange={this.handleChange}
         />
+        <button
+          type="submit"
+          name="button"
+          disabled={this.state.button}
+          onClick={() => {
+            this.props.handleSubmit(this.state);
+          }}
+        >
+          Login
+        </button>
       </>
     );
   }
 }
 Login.defaultValues = {
   type: "input",
-  value: "a",
 };
