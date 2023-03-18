@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Login } from "./Login";
+// import { Login } from "./Login";
 import { Welcome } from "./Welcome";
+import { UncontrolledLogin } from "./UncontrolledLogin";
 
 export class InteractiveWelcome extends Component {
   handleSubmit(state) {
@@ -10,11 +11,12 @@ export class InteractiveWelcome extends Component {
   render() {
     return (
       <>
-        <Login
+        {/* <Login
           handleSubmit={(state) => {
             this.handleSubmit(state);
           }}
-        />
+        /> */}
+        <UncontrolledLogin />
         <Welcome
           name={this.props.name}
           age={this.props.age}
