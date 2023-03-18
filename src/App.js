@@ -4,6 +4,21 @@ import { InteractiveWelcome } from "./Components/Welcome/InteractiveWelcome";
 import { ClickTracker } from "./Components/Counter/ClickTracker";
 import Colors from "./Components/List/Colors";
 
+let colorsArray = [
+  {
+    id: 1,
+    name: "Red",
+  },
+  {
+    id: 2,
+    name: "More Red",
+  },
+  {
+    id: 3,
+    name: "Guess what? MORE RED",
+  },
+];
+
 export class App extends React.Component {
   render() {
     return (
@@ -14,7 +29,7 @@ export class App extends React.Component {
         />
         <Counter counterStart={25} />
         <ClickTracker />
-        <Colors colors={["Red", "More Red", "I know only Red"]}  />
+        <Colors colors={colorsArray} />
       </>
     );
   }
