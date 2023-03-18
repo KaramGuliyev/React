@@ -1,7 +1,15 @@
-/* Modify the Counter component from Events 01 by styling the counter display 
-using an inline style attribute. */
+/* Modify the Login component from Forms 03 so that the "login" button 
+background color is "red" when the inputted password's length is shorter than 8 characters, green otherwise. */
 
 .welcome {
     background-color: gray;
     border: 1px solid black;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
 }

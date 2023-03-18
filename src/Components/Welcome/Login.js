@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 
-// Add a "login" button to the Login component.
-// This button should be disabled as long as the username and password inputs are empty.
-// When clicked, the event handler attached to the button should call an onLogin function passed as a prop to the Login component, passing it the state.
-
 export class Login extends Component {
   state = {
     userName: "",
     password: "",
     remember: false,
     button: true,
+    class: "red",
   };
 
   handleChange = (e) => {
@@ -18,17 +15,27 @@ export class Login extends Component {
     let value = e.target.value;
     let type = e.target.type;
     let checked = e.target.checked;
+    let style = e.target.class;
 
     this.setState({
       [name]:
         type === "checkbox" ? checked : value,
       button:
-        this.state.userName &&
+        this.state.userName === "" &&
         this.state.password === ""
           ? true
           : false,
+      class:
+        this.state.password.length < 8
+          ? "red"
+          : "green",
     });
+
+    if (this.state.password.length < 8) {
+      console.log(true);
+    }
   };
+
   clearForm() {
     this.setState({
       userName: "",
@@ -60,6 +67,8 @@ export class Login extends Component {
         <button
           type="submit"
           name="button"
+          className={this.state.class}
+          color="black"
           disabled={this.state.button}
           onClick={() => {
             this.props.handleSubmit(this.state);

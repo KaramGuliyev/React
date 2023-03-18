@@ -9,7 +9,7 @@ export class App extends React.Component {
   render() {
     return (
       <>
-        <Welcome
+        <InteractiveWelcome
           className="welcome"
           name={this.props.name}
           age={this.props.age}
