@@ -3,7 +3,9 @@ import { CounterDisplay } from "./CounterDisplay";
 import { ClickCounter } from "./ClickCounter";
 
 export class Counter extends React.Component {
-  state = { count: this.props.counterStart ?? 0 };
+  state = {
+    count: this.props.counterStart ?? 0,
+  };
 
   constructor(props) {
     super(props);
@@ -17,10 +19,19 @@ export class Counter extends React.Component {
   }
 
   render() {
+    const myStyle = {
+      backgroundColor: "lightgray",
+    };
     return (
       <>
-        <CounterDisplay state={this.state.count} />
-        <ClickCounter state={this.state} handler={this.handler} />
+        <CounterDisplay
+          style={myStyle}
+          state={this.state.count}
+        />
+        <ClickCounter
+          state={this.state}
+          handler={this.handler}
+        />
       </>
     );
   }

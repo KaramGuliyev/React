@@ -4,7 +4,7 @@ export class CounterDisplay extends React.Component {
   render() {
     return (
       <>
-        <h1>Counter : {this.props.state}</h1>
+        <h1 style={this.props.style}>Counter : {this.props.state}</h1>
       </>
     );
   }
