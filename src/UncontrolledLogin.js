@@ -6,6 +6,7 @@ import React, {
 export class UncontrolledLogin extends Component {
   _formRef = createRef();
   _buttonRef = createRef();
+  _focusRef = createRef();
   handleSubmit = (e) => {
     e.preventDefault();
     const formRef =
@@ -50,6 +51,14 @@ export class UncontrolledLogin extends Component {
     }
   };
 
+  componentDidMount = () => {
+    const focusInput =
+      this._formRef.current.elements.username;
+    focusInput.focus();
+  };
+
+  // My browser doesn't support those features even so, I did all the ways I know.
+
   render() {
     return (
       <>
@@ -61,6 +70,8 @@ export class UncontrolledLogin extends Component {
           <input
             name="username"
             onChange={this.handleChange}
+            autofocus
+            ref={this._focusRef}
           />
           <input
             name="password"
