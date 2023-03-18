@@ -29,6 +29,14 @@ export class Login extends Component {
           : false,
     });
   };
+  clearForm() {
+    this.setState({
+      userName: "",
+      password: "",
+      remember: false,
+      button: true,
+    });
+  }
 
   render() {
     return (
@@ -55,6 +63,7 @@ export class Login extends Component {
           disabled={this.state.button}
           onClick={() => {
             this.props.handleSubmit(this.state);
+            this.clearForm();
           }}
         >
           Login
