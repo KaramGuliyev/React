@@ -15,7 +15,6 @@ export class Login extends Component {
     let value = e.target.value;
     let type = e.target.type;
     let checked = e.target.checked;
-    let style = e.target.class;
 
     this.setState({
       [name]:

@@ -2,14 +2,23 @@
 background color is "red" when the inputted password's length is shorter than 8 characters, green otherwise. */
 
 .welcome {
-    background-color: gray;
-    border: 1px solid black;
+  background-color: gray;
+  border: 1px solid black;
 }
 
-.red {
-    background-color: red;
+.red,
+.redBorder {
+  background-color: red;
+}
+
+.redBorder {
+  border: 2px solid red;
 }
 
 .green {
-    background-color: green;
+  background-color: green;
+}
+
+.whiteBackground {
+  background-color: #fff;
 }
