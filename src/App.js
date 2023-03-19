@@ -17,7 +17,45 @@ export class App extends React.Component {
         />
         <Counter counterStart={25} />
         <ClickTracker />
-        <ToDoList />
+        <ToDoList
+          render={(
+            inputVal,
+            handleChange,
+            addTask,
+            resetForm,
+            lists,
+            removeList
+          ) => {
+            return (
+              <div>
+                <input
+                  value={inputVal}
+                  onChange={handleChange}
+                />
+                <button onClick={addTask}>
+                  GUESS WHAT THIS BUTTON DOES
+                </button>
+                <button onClick={resetForm}>
+                  Reset
+                </button>
+                <ul>
+                  {lists.map((e, i) => (
+                    <div key={i}>
+                      <li>{e}</li>
+                      <button
+                        onClick={() =>
+                          removeList(i)
+                        }
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </ul>
+              </div>
+            );
+          }}
+        ></ToDoList>
       </Container>
     );
   }
