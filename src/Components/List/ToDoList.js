@@ -24,7 +24,7 @@ function ToDoList() {
   };
 
   const removeList = (i) => {
-    lists.splice(i, i);
+    lists.splice(i, 1);
     setLists([...lists]);
   };
 
