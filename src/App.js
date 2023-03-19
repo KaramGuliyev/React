@@ -9,7 +9,7 @@ import Container from "./Components/ComponentComposition/Container";
 export class App extends React.Component {
   render() {
     return (
-      <Container>
+      <Container title="My Awful App">
         <InteractiveWelcome
           className="welcome"
           name={this.props.name}
