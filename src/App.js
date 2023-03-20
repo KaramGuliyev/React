@@ -7,6 +7,7 @@ import ToDoList from "./Components/List/ToDoList";
 import Container from "./Components/ComponentComposition/Container";
 import LanguageContext from "./Components/Context/LanguageContext";
 import DisplayLanguage from "./Components/Context/DisplayLanguage";
+import Sum from "./Components/Welcome/Sum";
 
 export default function App(props) {
   const [language, setLanguage] =
@@ -14,8 +15,11 @@ export default function App(props) {
   const handleLanguage = (e) => {
     setLanguage(e.target.value);
   };
+
+  const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
+      <Sum numbers={numbers} />
       <InteractiveWelcome
         className="welcome"
         name={props.name}
