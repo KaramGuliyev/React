@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Login } from "./Login";
-import { Welcome } from "./Welcome";
+import Welcome from "./Welcome";
 import { Login } from "./Login";
 
 export class InteractiveWelcome extends Component {
