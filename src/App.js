@@ -19,7 +19,7 @@ export default function App(props) {
   const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
-      <Sum numbers={numbers} />
+      <Sum/>
       <InteractiveWelcome
         className="welcome"
         name={props.name}
