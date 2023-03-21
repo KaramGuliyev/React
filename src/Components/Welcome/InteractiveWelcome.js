@@ -15,7 +15,7 @@ export class InteractiveWelcome extends Component {
       <>
         <Login
           handleSubmit={(state) => {
-            this.handleSubmit(state);
+            console.log(state);
           }}
         />
         {/* <UncontrolledLogin /> */}

@@ -1,85 +1,91 @@
-import React, { Component } from "react";
+import React, {
+  Component,
+  useState,
+} from "react";
 
-export class Login extends Component {
-  state = {
-    userName: "",
-    password: "",
-    remember: false,
-    button: true,
-    class: "red",
-  };
+// Rewrite the Login component from Forms 03 as a function component, and use the useState hook to track the state of the username, password and remember inputs.
+// Tip: you can use useState more than once.
 
-  handleChange = (e) => {
-    e.preventDefault();
-    let name = e.target.name;
-    let value = e.target.value;
-    let type = e.target.type;
-    let checked = e.target.checked;
+export function Login(props) {
+  const [userName, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] =
+    useState(false);
+  const [button, setButton] = useState(true);
+  const [styleClass, setStyleClass] =
+    useState("red");
 
-    this.setState({
-      [name]:
-        type === "checkbox" ? checked : value,
-      button:
-        this.state.userName === "" &&
-        this.state.password === ""
-          ? true
-          : false,
-      class:
-        this.state.password.length < 8
-          ? "red"
-          : "green",
-    });
-
-    if (this.state.password.length < 8) {
-      console.log(true);
-    }
-  };
-
-  clearForm() {
-    this.setState({
-      userName: "",
-      password: "",
-      remember: false,
-      button: true,
-    });
+  function clearForm() {
+    setUsername("");
+    setPassword("");
+    setRemember(false);
+    setButton(true);
+    setStyleClass("red");
   }
 
-  render() {
-    return (
-      <>
-        <input
-          name="userName"
-          value={this.state.userName}
-          onChange={this.handleChange}
-        />
-        <input
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <input
-          name="remember"
-          type="checkbox"
-          checked={this.state.remember}
-          onChange={this.handleChange}
-        />
-        <button
-          type="submit"
-          name="button"
-          className={this.state.class}
-          color="black"
-          disabled={this.state.button}
-          onClick={() => {
-            this.props.handleSubmit(this.state);
-            this.clearForm();
-          }}
-        >
-          Login
-        </button>
-      </>
-    );
-  }
+  return (
+    <>
+      <input
+        name="userName"
+        value={userName}
+        onChange={(e) => {
+          setUsername(e.target.value);
+          setButton(
+            userName === "" || password === ""
+              ? true
+              : false
+          );
+        }}
+      />
+      <input
+        name="password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setButton(
+            userName === "" || password === "" || password.length < 8
+              ? true
+              : false
+          );
+          setStyleClass(
+            password.length < 8
+              ? "red"
+              : "green"
+          );
+        }}
+      />
+      <input
+        name="remember"
+        type="checkbox"
+        checked={remember}
+        onChange={(e) => {
+          setRemember(e.target.checked);
+        }}
+      />
+      <button
+        type="submit"
+        name="button"
+        className={styleClass}
+        color="black"
+        disabled={button}
+        onChange={(e) => {}}
+        onClick={() => {
+          props.handleSubmit({
+            userName,
+            password,
+            remember,
+            button,
+            styleClass,
+          });
+          clearForm();
+        }}
+      >
+        Login
+      </button>
+    </>
+  );
 }
+
 Login.defaultValues = {
   type: "input",
 };
