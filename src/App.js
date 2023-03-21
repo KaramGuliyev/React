@@ -8,6 +8,7 @@ import Container from "./Components/ComponentComposition/Container";
 import LanguageContext from "./Components/Context/LanguageContext";
 import DisplayLanguage from "./Components/Context/DisplayLanguage";
 import Sum from "./Components/Welcome/Sum";
+import GithubUser from "./Components/GithubUser/GithubUser";
 
 export default function App(props) {
   const [language, setLanguage] =
@@ -19,27 +20,29 @@ export default function App(props) {
   const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
-      <Sum/>
-      <InteractiveWelcome
-        className="welcome"
-        name={props.name}
-        age={props.age}
-      />
-      <Counter counterStart={25} />
-      <ClickTracker />
-      <select
-        value={language}
-        onChange={handleLanguage}
-      >
-        <option value="en">EN</option>
-        <option value="az">TR</option>
-        <option value="it">IT</option>
-      </select>
-      <LanguageContext.Provider
-        value={language}
-      >
-        <DisplayLanguage />
-      </LanguageContext.Provider>
+      <GithubUser />
     </Container>
   );
 }
+
+// <Sum/>
+//       <InteractiveWelcome
+//         className="welcome"
+//         name={props.name}
+//         age={props.age}
+//       />
+//       <Counter counterStart={25} />
+//       <ClickTracker />
+//       <select
+//         value={language}
+//         onChange={handleLanguage}
+//       >
+//         <option value="en">EN</option>
+//         <option value="az">TR</option>
+//         <option value="it">IT</option>
+//       </select>
+//       <LanguageContext.Provider
+//         value={language}
+//       >
+//         <DisplayLanguage />
+//       </LanguageContext.Provider>
