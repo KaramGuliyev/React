@@ -1,14 +1,19 @@
+//   Create a GithubUserList component that maintains an array of usernames, showing a GithubUser component for each username entered.
+//   The usernames should be added to the array using an input field and a button.
+
 import React, {
   useEffect,
   useState,
 } from "react";
 
-function GithubUser() {
+export default function GithubUser({
+  username,
+}) {
   const [data, setData] = useState(null);
-  const [userName, setUsername] = useState("");
+
   useEffect(() => {
     fetch(
-      `https://api.github.com/users/${userName}`
+      `https://api.github.com/users/${username}`
     )
       .then((response) => {
         return response.json();
@@ -16,29 +21,10 @@ function GithubUser() {
       .then((json) => {
         setData(json);
       });
-  }, [userName]);
+  }, [username]);
   return (
     <div>
-      <input
-        value={userName}
-        onChange={(e) =>
-          setUsername(e.target.value)
-        }
-        placeholder="What is your github name?"
-      />
-      <div>
-        <div>
-          <div>
-            {data ? (
-              <h1>{data.login}</h1>
-            ) : (
-              "Habibi I asked your name!"
-            )}
-          </div>
-        </div>
-      </div>
+      <div>{data && <h1>{data.login}</h1>}</div>
     </div>
   );
 }
-
-export default GithubUser;

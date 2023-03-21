@@ -9,6 +9,7 @@ import LanguageContext from "./Components/Context/LanguageContext";
 import DisplayLanguage from "./Components/Context/DisplayLanguage";
 import Sum from "./Components/Welcome/Sum";
 import GithubUser from "./Components/GithubUser/GithubUser";
+import GithubUserList from "./Components/GithubUser/GithubUserList";
 
 export default function App(props) {
   const [language, setLanguage] =
@@ -20,7 +21,7 @@ export default function App(props) {
   const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
-      <GithubUser />
+      <GithubUserList />
     </Container>
   );
 }
