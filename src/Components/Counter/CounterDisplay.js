@@ -1,11 +1,12 @@
 import React from "react";
 
-export function CounterDisplay(props) {
+export function CounterDisplay({
+  count,
+  style,
+}) {
   return (
     <>
-      <h1 style={props.style}>
-        Counter : {props.state}
-      </h1>
+      <h1 style={style}>Counter : {count}</h1>
     </>
   );
 }

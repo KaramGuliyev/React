@@ -8,19 +8,30 @@ export function Counter(props) {
   function handler() {
     setCount(count + 1);
   }
+
   const myStyle = {
     backgroundColor: "lightgray",
   };
+
+  function handleCounterChange(count) {
+    console.log(`Habibi Counter : ${count}`);
+  }
+
+  // Add a side effect to the ClickCounter component from useState 01 that calls a onCounterChange
+  // function with the current value of the counter every time value of the counter changes.
+  // The function should be received as a prop.
 
   return (
     <>
       <CounterDisplay
         style={myStyle}
-        state={count}
+        count={count}
+        onCounterChange={handleCounterChange}
       />
       <ClickCounter
-        state={count}
         handler={handler}
+        count={count}
+        onCounterChange={handleCounterChange}
       />
     </>
   );

@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../Button";
 
-export function ClickCounter(props) {
+export function ClickCounter({
+  count,
+  onCounterChange,
+  handler,
+}) {
+  useEffect(() => {
+    onCounterChange(count)
+    return () => {
+    };
+  }, [count, onCounterChange]);
+
   return (
     <>
-      <Button
-        handler={props.handler}
-        innerText="+"
-      />
+      <Button handler={handler} innerText="+" />
     </>
   );
 }
