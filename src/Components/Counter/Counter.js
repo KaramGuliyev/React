@@ -1,38 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { CounterDisplay } from "./CounterDisplay";
 import { ClickCounter } from "./ClickCounter";
 
-export class Counter extends React.Component {
-  state = {
-    count: this.props.counterStart ?? 0,
+export function Counter(props) {
+  const [count, setCount] = useState(0);
+
+  function handler() {
+    setCount(count + 1);
+  }
+  const myStyle = {
+    backgroundColor: "lightgray",
   };
 
-  constructor(props) {
-    super(props);
-    this.handler = this.handler.bind(this);
-  }
-
-  handler() {
-    this.setState((state) => {
-      return { count: state.count + 1 };
-    });
-  }
-
-  render() {
-    const myStyle = {
-      backgroundColor: "lightgray",
-    };
-    return (
-      <>
-        <CounterDisplay
-          style={myStyle}
-          state={this.state.count}
-        />
-        <ClickCounter
-          state={this.state}
-          handler={this.handler}
-        />
-      </>
-    );
-  }
+  return (
+    <>
+      <CounterDisplay
+        style={myStyle}
+        state={count}
+      />
+      <ClickCounter
+        state={count}
+        handler={handler}
+      />
+    </>
+  );
 }

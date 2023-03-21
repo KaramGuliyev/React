@@ -1,11 +1,11 @@
 import React from "react";
 
-export class CounterDisplay extends React.Component {
-  render() {
-    return (
-      <>
-        <h1 style={this.props.style}>Counter : {this.props.state}</h1>
-      </>
-    );
-  }
+export function CounterDisplay(props) {
+  return (
+    <>
+      <h1 style={props.style}>
+        Counter : {props.state}
+      </h1>
+    </>
+  );
 }
