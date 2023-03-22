@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import LanguageContext from "./LanguageContext";
 const Strings = {
   en: {
@@ -15,26 +15,23 @@ const Strings = {
   },
 };
 
-// Consume the LanguageContext within the DisplayLanguage component by using the context consumer, and show the selected language in an h1 tag.
+// Rewrite the DisplayLanguage component from Context 02 to be a function component, and access the LanguageContext through the useContext hook.
 
 function DisplayLanguage() {
+  const language = useContext(LanguageContext);
   return (
     <div>
-      <LanguageContext.Consumer>
-        {(language) => (
-          <div>
-            <p>
-              {Strings[language].helloMsg}
-              Habibi!
-            </p>
-            <p>
-              Habibi it's{" "}
-              {Strings[language].language}{" "}
-              Language!
-            </p>
-          </div>
-        )}
-      </LanguageContext.Consumer>
+      {
+        <div>
+          <p>
+            {Strings[language].helloMsg}
+            Habibi!
+          </p>
+          <p>
+            Habibi it's {Strings[language].language} Language!
+          </p>
+        </div>
+      }
     </div>
   );
 }
