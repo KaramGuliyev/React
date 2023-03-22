@@ -1,18 +1,33 @@
-import React from "react";
+// Modify the useGithubUser hook to return the function to fetch the data of a Github user,
+// along with the data of the user and the error and loading states.
+
+import React, { useEffect } from "react";
 import useGithubUser from "./useGithubUser";
 
 export default function GithubUser({ username }) {
-  const { user, isLoading } = useGithubUser(username);
+  const { user, loading, error, fectUserData } =
+    useGithubUser();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    fectUserData(username);
+  }, [username]);
 
+  // console.log(error?.message);
   if (user) {
     return (
-      <div>
-        <img src={user.avatar_url} alt={user.id} />
-        <h2>{user.login}</h2>
+      <div style={{ marginTop: "2rem" }}>
+        {loading && <div>Loading...</div>}
+        {error && <div>Error: {error.message}</div>}
+        {user && (
+          <div>
+            <img
+              src={user.avatar_url}
+              alt={user.login}
+              width="50"
+            />
+            <h2>{user.login}</h2>
+          </div>
+        )}
       </div>
     );
   }
