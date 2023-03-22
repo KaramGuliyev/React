@@ -4,17 +4,20 @@ import { Button } from "../Button";
 export function ClickCounter({
   count,
   onCounterChange,
-  handler,
+  handleInc,
+  handleDec,
+  handleReset,
 }) {
   useEffect(() => {
-    onCounterChange(count)
-    return () => {
-    };
+    onCounterChange(count);
+    return () => {};
   }, [count, onCounterChange]);
 
   return (
     <>
-      <Button handler={handler} innerText="+" />
+      <Button handler={handleInc} innerText="+" />
+      <Button handler={handleDec} innerText="-" />
+      <Button handler={handleReset} innerText="Reset" />
     </>
   );
 }

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { CounterDisplay } from "./CounterDisplay";
 import { ClickCounter } from "./ClickCounter";
+import useCounter from "../../CustomHooks/useCounter";
 
 export function Counter(props) {
-  const [count, setCount] = useState(0);
 
-  function handler() {
-    setCount(count + 1);
-  }
+  const { count, onIncrement, onDecrement, onReset } =
+    useCounter(0);
 
   const myStyle = {
     backgroundColor: "lightgray",
@@ -29,7 +28,9 @@ export function Counter(props) {
         onCounterChange={handleCounterChange}
       />
       <ClickCounter
-        handler={handler}
+        handleInc={onIncrement}
+        handleDec={onDecrement}
+        handleReset={onReset}
         count={count}
         onCounterChange={handleCounterChange}
       />

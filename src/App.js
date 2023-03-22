@@ -21,7 +21,9 @@ export default function App(props) {
   const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
-      <GithubUserList />
+      {/* <GithubUserList /> */}
+
+      <Counter counterStart={25} />
     </Container>
   );
 }
