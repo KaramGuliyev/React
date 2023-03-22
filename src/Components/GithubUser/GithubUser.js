@@ -1,44 +1,19 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React from "react";
+import useGithubUser from "./useGithubUser";
 
-function GithubUser() {
-  const [data, setData] = useState(null);
-  const [userName, setUsername] = useState("");
-  useEffect(() => {
-    fetch(
-      `https://api.github.com/users/${userName}`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        setData(json);
-      });
-  }, [userName]);
-  return (
-    <div>
-      <input
-        value={userName}
-        onChange={(e) =>
-          setUsername(e.target.value)
-        }
-        placeholder="What is your github name?"
-      />
+export default function GithubUser({ username }) {
+  const { user, isLoading } = useGithubUser(username);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (user) {
+    return (
       <div>
-        <div>
-          <div>
-            {data ? (
-              <h1>{data.login}</h1>
-            ) : (
-              "Habibi I asked your name!"
-            )}
-          </div>
-        </div>
+        <img src={user.avatar_url} alt={user.id} />
+        <h2>{user.login}</h2>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
-export default GithubUser;

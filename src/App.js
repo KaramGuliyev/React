@@ -9,10 +9,10 @@ import LanguageContext from "./Components/Context/LanguageContext";
 import DisplayLanguage from "./Components/Context/DisplayLanguage";
 import Sum from "./Components/Welcome/Sum";
 import GithubUser from "./Components/GithubUser/GithubUser";
+import GithubUseWrapper from "./Components/GithubUser/GithubUseWrapper";
 
 export default function App(props) {
-  const [language, setLanguage] =
-    useState("en");
+  const [language, setLanguage] = useState("en");
   const handleLanguage = (e) => {
     setLanguage(e.target.value);
   };
@@ -20,7 +20,7 @@ export default function App(props) {
   const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
-      <GithubUser />
+      <GithubUseWrapper />
     </Container>
   );
 }
