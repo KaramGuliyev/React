@@ -1,41 +1,17 @@
-import React, { useState } from "react";
-import { Counter } from "./Components/Counter/Counter";
-import { InteractiveWelcome } from "./Components/Welcome/InteractiveWelcome";
-import { ClickTracker } from "./Components/Counter/ClickTracker";
-import ToDoList from "./Components/List/ToDoList";
-// import { Welcome } from "./Components/Welcome/Welcome";
+import React from "react";
 import Container from "./Components/ComponentComposition/Container";
-import LanguageContext from "./Components/Context/LanguageContext";
-import DisplayLanguage from "./Components/Context/DisplayLanguage";
+import { Route, Routes } from "react-router-dom";
+import Welcome from "./Components/Welcome/Welcome";
 
 export default function App(props) {
-  const [language, setLanguage] =
-    useState("en");
-  const handleLanguage = (e) => {
-    setLanguage(e.target.value);
-  };
+  // Create an App component that wraps a Routes component and add a single Route to the / path that renders the Welcome component from
+  // Function Components 01, passing it a name prop. Render the App component within a BrowserRouter component.
+
   return (
     <Container title="My Awful App">
-      <InteractiveWelcome
-        className="welcome"
-        name={props.name}
-        age={props.age}
-      />
-      <Counter counterStart={25} />
-      <ClickTracker />
-      <select
-        value={language}
-        onChange={handleLanguage}
-      >
-        <option value="en">EN</option>
-        <option value="az">TR</option>
-        <option value="it">IT</option>
-      </select>
-      <LanguageContext.Provider
-        value={language}
-      >
-        <DisplayLanguage />
-      </LanguageContext.Provider>
+      <Routes>
+        <Route path="/" element={<Welcome name={"Habibi"} age={35} />} />
+      </Routes>
     </Container>
   );
 }
