@@ -1,42 +1,27 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function GithubUser() {
   const [data, setData] = useState(null);
-  const [userName, setUsername] = useState("");
+  const { username } = useParams();
+  const [userName, setUserName] = useState(username);
+
   useEffect(() => {
-    fetch(
-      `https://api.github.com/users/${userName}`
-    )
+    fetch(`https://api.github.com/users/${userName}`)
       .then((response) => {
         return response.json();
       })
       .then((json) => {
         setData(json);
       });
-  }, [userName]);
+  }, [username]);
   return (
     <div>
-      <input
-        value={userName}
-        onChange={(e) =>
-          setUsername(e.target.value)
-        }
-        placeholder="What is your github name?"
-      />
-      <div>
-        <div>
-          <div>
-            {data ? (
-              <h1>{data.login}</h1>
-            ) : (
-              "Habibi I asked your name!"
-            )}
-          </div>
-        </div>
-      </div>
+      {data ? (
+        <h1>{data.login}</h1>
+      ) : (
+        "Habibi I asked your name!"
+      )}
     </div>
   );
 }
