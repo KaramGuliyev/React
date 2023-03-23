@@ -25,6 +25,10 @@ export default function App(props) {
           element={<Counter count={35} />}
         />
         <Route path="/users" element={<GithubUserList />}>
+          <Route
+            index
+            element={<p><strong>Add a user or select it from amazing people list</strong></p>}
+          />
           <Route path=":username" element={<GithubUser />} />
         </Route>
         <Route path="*" element={<NotFound />} />
@@ -34,7 +38,7 @@ export default function App(props) {
       <br />
       <Link to={"/counter"}>Counter</Link>
       <br />
-      <Link to={"/users/KaramGuliyev"}>Habibi's Github</Link>
+      <Link to={"/users/"}>Habibi's Github</Link>
       <br />
     </Container>
   );

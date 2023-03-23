@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
+import GithubUser from "./GithubUser";
 
-function ShowGithubUser({user}) {
+function ShowGithubUser({ user }) {
   return (
-    <div>{user}
-    {console.log(user)}</div>
-  )
+    <div>
+      <GithubUser username={user} />
+    </div>
+  );
 }
 
-export default ShowGithubUser
+export default ShowGithubUser;

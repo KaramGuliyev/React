@@ -2,10 +2,11 @@
 //   The usernames should be added to the array using an input field and a button.
 
 import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 export default function GithubUser({ username }) {
   const [data, setData] = useState(null);
-  console.log("Hello!");
+  console.log(username);
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}`)
@@ -18,7 +19,16 @@ export default function GithubUser({ username }) {
   }, [username]);
   return (
     <div>
-      <div>{data && <h1>{data.login}</h1>}</div>
+      <div>
+        {data && (
+          <li>
+            <Link
+              to={`https://www.github.com/${username}`}
+              target={"_self"}
+            >{`${data.login}'s Github`}</Link>
+          </li>
+        )}
+      </div>
     </div>
   );
 }
