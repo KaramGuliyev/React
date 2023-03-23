@@ -4,6 +4,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Welcome from "./Components/Welcome/Welcome";
 import { Counter } from "./Components/Counter/Counter";
 import GithubUser from "./Components/GithubUser/GithubUser";
+import NotFound from "./Components/NotFound/NotFound";
 
 export default function App(props) {
   // Add three Links within the main App component and use them to navigate to all three routes.
@@ -22,6 +23,10 @@ export default function App(props) {
         <Route
           path="/users/:username"
           element={<GithubUser username={"KaramGuliyev"} />}
+        />
+        <Route
+          path="*"
+          element={<NotFound />}
         />
       </Routes>
       <br />
