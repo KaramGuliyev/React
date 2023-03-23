@@ -1,49 +1,41 @@
-import React, { useState } from "react";
-import { Counter } from "./Components/Counter/Counter";
-import { InteractiveWelcome } from "./Components/Welcome/InteractiveWelcome";
-import { ClickTracker } from "./Components/Counter/ClickTracker";
-import ToDoList from "./Components/List/ToDoList";
-// import { Welcome } from "./Components/Welcome/Welcome";
+import React from "react";
 import Container from "./Components/ComponentComposition/Container";
-import LanguageContext from "./Components/Context/LanguageContext";
-import DisplayLanguage from "./Components/Context/DisplayLanguage";
-import Sum from "./Components/Welcome/Sum";
+import { Link, Route, Routes } from "react-router-dom";
+import Welcome from "./Components/Welcome/Welcome";
+import { Counter } from "./Components/Counter/Counter";
 import GithubUser from "./Components/GithubUser/GithubUser";
+import NotFound from "./Components/NotFound/NotFound.js";
 import GithubUserList from "./Components/GithubUser/GithubUserList";
 
 export default function App(props) {
-  const [language, setLanguage] =
-    useState("en");
-  const handleLanguage = (e) => {
-    setLanguage(e.target.value);
-  };
+  // Add a Route to the users path that shows the GihubUserList component from useEffect 04.
+  // Modify it so that instead of showing the GithubUser component for each username entered,
+  // it shows a link to a nested route that shows the ShowGithubUser component. In doing so, remove the
+  // /users/:username route from the App component, and add a new nested route within the /users route.
 
-  const numbers = [1, 2, 3, 4];
   return (
     <Container title="My Awful App">
-      <GithubUserList />
+      <Routes>
+        <Route
+          path="/"
+          element={<Welcome name={"Habibi"} age={35} />}
+        />
+        <Route
+          path="/counter"
+          element={<Counter count={35} />}
+        />
+        <Route path="/users" element={<GithubUserList />}>
+          <Route path=":username" element={<GithubUser />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <br />
+      <Link to={"/"}>Home</Link>
+      <br />
+      <Link to={"/counter"}>Counter</Link>
+      <br />
+      <Link to={"/users/KaramGuliyev"}>Habibi's Github</Link>
+      <br />
     </Container>
   );
 }
-
-// <Sum/>
-//       <InteractiveWelcome
-//         className="welcome"
-//         name={props.name}
-//         age={props.age}
-//       />
-//       <Counter counterStart={25} />
-//       <ClickTracker />
-//       <select
-//         value={language}
-//         onChange={handleLanguage}
-//       >
-//         <option value="en">EN</option>
-//         <option value="az">TR</option>
-//         <option value="it">IT</option>
-//       </select>
-//       <LanguageContext.Provider
-//         value={language}
-//       >
-//         <DisplayLanguage />
-//       </LanguageContext.Provider>
