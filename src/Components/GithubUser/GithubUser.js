@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useGithubUser from "./useGithubUser";
 
 export default function GithubUser({ username }) {
-  const { user, error, loading, onFetchuser } =
+  const { user, error, loading, onFetchuser, refetch } =
     useGithubUser(username);
+
+  useEffect(() => {
+    refetch(username);
+  }, [username]);
 
   if (user) {
     return (

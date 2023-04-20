@@ -13,8 +13,12 @@ const useGithubUser = (username) => {
     mutate();
   };
 
+  const refetch = async () => {
+    await mutate(undefined, true);
+  };
+
   if (!username) return error;
-  
+
   return {
     user: data,
     error,
