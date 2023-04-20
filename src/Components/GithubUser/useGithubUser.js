@@ -12,6 +12,9 @@ const useGithubUser = (username) => {
   const fetchGithubUser = () => {
     mutate();
   };
+
+  if (!username) return error;
+  
   return {
     user: data,
     error,
