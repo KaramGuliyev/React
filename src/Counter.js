@@ -1,5 +1,6 @@
-// Modify the Counter component so that the initial value of the counter, 
-// the increment interval and the increment amount are passed as props to the component.
+// Not only the counterStart, but the amount to increment, and the interval should be passed as a prop. 
+// You can initialize the state in either the constructor or when componentDidMount() function gets called. And take the amount that the count changes from props. 
+// So if I want to increment it by 5, this should have to be possible from the Counter props.
 
 import React from "react";
 
@@ -10,7 +11,7 @@ export class Counter extends React.Component {
     setInterval(() => {
       this.setState((state) => {
         console.log(state);
-        return { count: state.count + 2 };
+        return { count: state.count + this.props.incrementAmount};
       });
     }, 2000);
   }

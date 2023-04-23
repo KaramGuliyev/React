@@ -7,7 +7,7 @@ export class App extends React.Component {
     return (
       <>
         <Welcome name={this.props.name} age={this.props.age} />
-        <Counter counterStart={25} />
+        <Counter counterStart={25} incrementAmount={5} />
       </>
     );
   }
