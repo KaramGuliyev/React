@@ -21,14 +21,12 @@ function ToDoList() {
 
   const resetForm = () => {
     setInputVal("");
+    setLists([]);
   };
 
   return (
     <>
-      <input
-        value={inputVal}
-        onChange={handleChange}
-      />
+      <input value={inputVal} onChange={handleChange} />
       <button onClick={addTask}>
         GUESS WHAT THIS BUTTON DOES
       </button>
